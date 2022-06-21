@@ -3,8 +3,11 @@ package com.example.learnspringbootpart02.jdbc;
 import com.example.learnspringbootpart02.entity.Person;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -13,13 +16,25 @@ public class PersonJdbcDao {
 
     JdbcTemplate jdbcTemplate;
 
+    class PersonRowMapper implements RowMapper<Person> {
+        @Override
+        public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Person person = new Person();
+            person.setId(rs.getInt("id"));
+            person.setName(rs.getString("name"));
+            person.setLocation(rs.getString("location"));
+            person.setBirthdate(rs.getTimestamp("BIRTH_DATE"));
+            return person;
+        }
+    }
+
     public PersonJdbcDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     // select * from person
     public List<Person> findAll() {
-        return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper<>(Person.class));
+        return jdbcTemplate.query("select * from person", new PersonRowMapper());
     }
 
     // select one person by id
