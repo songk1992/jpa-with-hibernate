@@ -1,0 +1,1 @@
+insert into course(id, name) values(10001, '인기강좌');
