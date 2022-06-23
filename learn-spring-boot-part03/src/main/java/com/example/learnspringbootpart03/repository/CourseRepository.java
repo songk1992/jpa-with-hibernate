@@ -34,4 +34,14 @@ public class CourseRepository {
         return course;
     }
 
+    // transaction 내부에 persist 를 호출하면
+    // entity 들을 1차 캐시에 저장하고, 논리적으로 DB 저장소에 넣기 전에 persist context에 넣고 기다린 다음
+    // transaction이 끝나면 동시에 DB에 쿼리를 보내고
+    // flush() 라고 한다.
+    public void learnEntityManager(){
+        Course course = new Course("new course");
+        em.persist(course);
+        course.setName("new Course - updated");
+    }
+
 }

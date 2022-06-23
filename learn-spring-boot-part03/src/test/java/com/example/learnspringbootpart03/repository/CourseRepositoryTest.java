@@ -48,4 +48,11 @@ public class CourseRepositoryTest {
         assertEquals("Hello2", course2.getName());
     }
 
+    @Test
+    @DirtiesContext
+    public void learnEntityManager(){
+        repository.learnEntityManager();
+    }
+
+
 }
