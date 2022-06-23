@@ -1,5 +1,6 @@
 package com.example.learnspringbootpart03;
 
+import com.example.learnspringbootpart03.entity.Course;
 import com.example.learnspringbootpart03.repository.CourseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,5 +31,11 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
         // delete 10001
         repository.deleteById(10001L);
 
+        // save 1
+        repository.save(new Course("how to say hello"));
+
+        Course course = new Course("how to say hello2");
+        course.setId(1L);
+        repository.save(course);
     }
 }
