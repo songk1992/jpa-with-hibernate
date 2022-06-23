@@ -39,6 +39,6 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
         repository.save(course);
 
         // entity manager
-        repository.learnEntityManager02();
+        repository.learnEntityManager03();
     }
 }

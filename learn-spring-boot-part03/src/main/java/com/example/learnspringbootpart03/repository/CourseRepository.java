@@ -63,4 +63,19 @@ public class CourseRepository {
         course2.setName("new Course 2 - updated");
         em.flush();
     }
+
+    // refresh 로 연관된 데이터를 다시 불러와서 새로고침한다
+    public void learnEntityManager03(){
+        Course course1 = new Course("new course");
+        em.persist(course1);
+        Course course2 = new Course("new course 2");
+        em.persist(course2);
+        em.flush();
+
+        course1.setName("new Course - updated");
+        course2.setName("new Course 2 - updated");
+
+        em.refresh(course1);
+        em.flush();
+    }
 }
