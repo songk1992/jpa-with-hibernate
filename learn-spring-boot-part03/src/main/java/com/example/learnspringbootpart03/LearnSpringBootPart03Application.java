@@ -23,6 +23,12 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        // select 10001
         logger.info(repository.findById(10001L).toString());
+
+        // delete 10001
+        repository.deleteById(10001L);
+
     }
 }
