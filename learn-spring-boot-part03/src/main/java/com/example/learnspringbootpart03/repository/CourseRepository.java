@@ -44,4 +44,23 @@ public class CourseRepository {
         course.setName("new Course - updated");
     }
 
+    // detach 이후 course 2 에 의해서 업데이트 되는 내용은 DB로 보내지지 않음
+    public void learnEntityManager02(){
+        Course course1 = new Course("new course");
+        em.persist(course1);
+        em.flush();
+
+        course1.setName("new Course - updated");
+        em.flush();
+
+        Course course2 = new Course("new course 2");
+        em.persist(course2);
+        em.flush();
+
+        em.detach(course2); // DB 보내기전의 설정된 데이트를 track 화지 않음
+        em.clear(); // DB 보내기 전의 모든 데이터를 clear 함
+
+        course2.setName("new Course 2 - updated");
+        em.flush();
+    }
 }
