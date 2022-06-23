@@ -78,4 +78,11 @@ public class CourseRepository {
         em.refresh(course1);
         em.flush();
     }
+
+    public void learnEntityManager04(){
+        Course course1 = new Course("new course");
+        em.persist(course1);
+        Course course2 = new Course("new course 2");
+        course2.setName("new Course 2 - updated");
+    }
 }

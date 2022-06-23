@@ -35,10 +35,10 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
         repository.save(new Course("how to say hello"));
 
         Course course = new Course("how to say hello2");
-        course.setId(1L);
+        course.setId(10001L);
         repository.save(course);
 
         // entity manager
-        repository.learnEntityManager03();
+        repository.learnEntityManager04();
     }
 }
