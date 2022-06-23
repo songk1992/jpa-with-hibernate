@@ -1,5 +1,6 @@
 package com.example.learnspringbootpart03.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public class Course {
     @GeneratedValue
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
     public Course() {
