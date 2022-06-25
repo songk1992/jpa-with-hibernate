@@ -9,10 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LearnSpringBootPart03Application.class)
@@ -27,6 +26,7 @@ class StudentRepositoryTest {
     EntityManager em;
 
     @Test
+    @Transactional
     void retrieveStudentAndPasswordDetails() {
         Student student = em.find(Student.class, 30001L);
         logger.info("student -> {}", student);
