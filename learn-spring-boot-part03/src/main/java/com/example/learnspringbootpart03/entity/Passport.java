@@ -1,9 +1,6 @@
 package com.example.learnspringbootpart03.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Passport {
@@ -16,6 +13,10 @@ public class Passport {
 
     public Passport(Long id, String number) {
         this.id = id;
+        this.number = number;
+    }
+
+    public Passport(String number) {
         this.number = number;
     }
 
