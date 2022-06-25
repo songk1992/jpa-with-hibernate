@@ -1,6 +1,7 @@
 package com.example.learnspringbootpart03.repository;
 
 import com.example.learnspringbootpart03.LearnSpringBootPart03Application;
+import com.example.learnspringbootpart03.entity.Passport;
 import com.example.learnspringbootpart03.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -32,4 +33,10 @@ class StudentRepositoryTest {
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
     }
+
+    @Test
+    public void someTest() {
+        repository.someOperationToUnderstandPersistence();
+    }
+
 }
