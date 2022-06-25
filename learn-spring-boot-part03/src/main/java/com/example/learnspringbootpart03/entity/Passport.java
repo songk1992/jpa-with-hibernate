@@ -11,6 +11,9 @@ public class Passport {
     @Column(name = "number", nullable = false)
     private String number;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
+    private Student student;
+
     public Passport(Long id, String number) {
         this.id = id;
         this.number = number;
@@ -22,6 +25,14 @@ public class Passport {
 
     public Passport() {
 
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Long getId() {
