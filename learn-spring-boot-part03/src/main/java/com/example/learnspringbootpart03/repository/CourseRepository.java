@@ -1,6 +1,7 @@
 package com.example.learnspringbootpart03.repository;
 
 import com.example.learnspringbootpart03.entity.Course;
+import com.example.learnspringbootpart03.entity.Review;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,5 +85,24 @@ public class CourseRepository {
         em.persist(course1);
         Course course2 = new Course("new course 2");
         course2.setName("new Course 2 - updated");
+    }
+
+    public void addReviewsForCourse() {
+        // get the course 10003
+        Course course = findById(10001L);
+
+        // add 2 reviews to it
+        Review review1 = new Review("5", "Great Hands-on Stuff");
+        Review review2 = new Review("5", "Great Hands-on Stuff");
+
+        course.addReviews(review1);
+        review1.setCourse(course);
+
+        course.addReviews(review2);
+        review2.setCourse(course);
+
+        // save it to the database
+        em.persist(review1);
+        em.persist(review2);
     }
 }

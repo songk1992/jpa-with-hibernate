@@ -27,6 +27,7 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepository.saveStudentWithPassport();
+        courseRepository.addReviewsForCourse();
+
     }
 }

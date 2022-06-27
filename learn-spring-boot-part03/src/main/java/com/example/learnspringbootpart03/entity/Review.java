@@ -21,8 +21,7 @@ public class Review {
 
     }
 
-    public Review(Long id, String description, String rating) {
-        this.id = id;
+    public Review(String description, String rating) {
         this.description = description;
         this.rating = rating;
     }
