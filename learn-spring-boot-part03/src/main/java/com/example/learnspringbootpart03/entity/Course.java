@@ -29,7 +29,7 @@ public class Course {
     @CreationTimestamp
     private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<Review> reviews = new ArrayList<>();
 
     public void addReviews(Review review) {
