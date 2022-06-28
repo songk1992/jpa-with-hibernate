@@ -1,5 +1,6 @@
 package com.example.learnspringbootpart03.repository;
 
+import com.example.learnspringbootpart03.entity.Course;
 import com.example.learnspringbootpart03.entity.Passport;
 import com.example.learnspringbootpart03.entity.Student;
 import com.example.learnspringbootpart03.entity.Student;
@@ -56,4 +57,25 @@ public class StudentRepository {
 
     }
 
+    public void insertHardCodedStudentAndCourse(){
+        Student student = new Student("Jack");
+        Course course = new Course("MSA");
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourses(course);
+        course.addStudent(student);
+        em.persist(student);
+
+    }
+
+    public void inserStudentAndCourse(Student student, Course course){
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourses(course);
+        course.addStudent(student);
+        em.persist(student);
+
+    }
 }

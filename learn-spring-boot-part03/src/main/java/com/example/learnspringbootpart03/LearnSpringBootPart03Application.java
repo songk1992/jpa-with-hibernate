@@ -1,6 +1,8 @@
 package com.example.learnspringbootpart03;
 
+import com.example.learnspringbootpart03.entity.Course;
 import com.example.learnspringbootpart03.entity.Review;
+import com.example.learnspringbootpart03.entity.Student;
 import com.example.learnspringbootpart03.repository.CourseRepository;
 import com.example.learnspringbootpart03.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -32,10 +34,10 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        List<Review> reviews = new ArrayList<>();
-        reviews.add(new Review("5", "Great Hands-on Stuff"));
-        reviews.add(new Review("5", "Great Hands-on Stuff"));
-        courseRepository.addReviewsForCourse(10001L, reviews);
-
+//        List<Review> reviews = new ArrayList<>();
+//        reviews.add(new Review("5", "Great Hands-on Stuff"));
+//        reviews.add(new Review("5", "Great Hands-on Stuff"));
+//        courseRepository.addReviewsForCourse(10001L, reviews);
+        studentRepository.inserStudentAndCourse(new Student("Jack"), new Course("MSA"));
     }
 }
