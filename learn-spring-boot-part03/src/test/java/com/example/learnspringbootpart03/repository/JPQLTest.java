@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -24,43 +25,57 @@ public class JPQLTest {
     EntityManager em;
 
     @Test
-    public void findById(){
+    public void findById() {
         List resultList = em.createNamedQuery("q_get_all_courses").getResultList();
         logger.info("select c from Course c -> {}", resultList);
     }
 
     @Test
-    public void findById_jpql_typed(){
+    public void findById_jpql_typed() {
         TypedQuery<Course> query = em.createNamedQuery("q_get_all_courses", Course.class);
         List<Course> resultList = query.getResultList();
         logger.info("select c from Course c -> {}", resultList);
     }
 
     @Test
-    public void findById_jpql_where(){
+    public void findById_jpql_where() {
         TypedQuery<Course> query = em.createNamedQuery("q_get_like_he_courses", Course.class);
         List<Course> resultList = query.getResultList();
         logger.info("select c from Course c -> {}", resultList);
     }
 
     @Test
-    public void jpql_courses_without_students(){
+    public void jpql_courses_without_students() {
         TypedQuery<Course> query = em.createQuery("Select c from Course c where c.students is empty", Course.class);
         List<Course> resultList = query.getResultList();
         logger.info("Results -> {}", resultList);
     }
 
     @Test
-    public void jpql_courses_with_atleast_2_students(){
+    public void jpql_courses_with_atleast_2_students() {
         TypedQuery<Course> query = em.createQuery("Select c from Course c where size(c.students) > 2", Course.class);
         List<Course> resultList = query.getResultList();
         logger.info("Results -> {}", resultList);
     }
 
     @Test
-    public void jpql_student_with_certain_passport(){
+    public void jpql_student_with_certain_passport() {
         TypedQuery<Student> query = em.createQuery("Select s from Student s where s.passport.number like '%여권%'", Student.class);
         List<Student> resultList = query.getResultList();
         logger.info("Student -> {}", resultList);
     }
+
+    // JOIN => Select c, s from Course c JOIN c. student s
+    // LEFT JOIN =>
+    // CROSS JOIN =>
+    @Test
+    public void join() {
+        Query query = em.createQuery("Select c, s from Course c JOIN c.students s");
+        List<Object[]> resultList = query.getResultList();
+        logger.info("Results Size -> {}", resultList.size());
+        for (Object[] result : resultList) {
+            logger.info("Couse{} Student{}", result[0], result[1]);
+        }
+    }
+
 }
