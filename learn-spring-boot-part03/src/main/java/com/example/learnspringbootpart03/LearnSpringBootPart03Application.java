@@ -45,7 +45,8 @@ public class LearnSpringBootPart03Application implements CommandLineRunner {
         employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
         employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
 
-        logger.info("{}", employeeRepository.retrieveAllEmployees());
+        logger.info("{}", employeeRepository.retrieveAllPartTimeEmployees());
+        logger.info("{}", employeeRepository.retrieveAllPartTimeEmployees());
 
     }
 }
