@@ -1,6 +1,7 @@
 package com.example.learnspringbootpart03.repository;
 
 import com.example.learnspringbootpart03.LearnSpringBootPart03Application;
+import com.example.learnspringbootpart03.entity.Address;
 import com.example.learnspringbootpart03.entity.Passport;
 import com.example.learnspringbootpart03.entity.Student;
 import org.junit.jupiter.api.Test;
@@ -54,4 +55,14 @@ class StudentRepositoryTest {
         logger.info("student -> {}", student);
         logger.info("courses -> {}", student.getCourses());
     }
+
+    @Test
+    @Transactional
+    void setAddressDetails() {
+        Student student = em.find(Student.class, 30001L);
+        student.setAddress(new Address("No 101", "1", "2", "hey"));
+        logger.info("student -> {}", student);
+        logger.info("passport -> {}", student.getPassport());
+    }
+
 }

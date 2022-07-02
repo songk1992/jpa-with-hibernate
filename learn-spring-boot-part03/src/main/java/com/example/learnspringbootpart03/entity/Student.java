@@ -26,6 +26,9 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name="COURSE_ID"))
     private List<Course> courses = new ArrayList<>();
 
+    @Embedded
+    Address address;
+
     public Student(String name) {
         this.name = name;
     }
@@ -64,6 +67,18 @@ public class Student {
 
     public void addCourses(Course course) {
         this.courses.add(course);
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
