@@ -2,6 +2,7 @@ package com.example.learnspringbootpart03.repository;
 
 import com.example.learnspringbootpart03.entity.Course;
 import com.example.learnspringbootpart03.entity.Review;
+import com.example.learnspringbootpart03.entity.ReviewRating;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -93,8 +94,8 @@ public class CourseRepository {
         Course course = findById(10001L);
 
         // add 2 reviews to it
-        Review review1 = new Review("5", "Great Hands-on Stuff");
-        Review review2 = new Review("5", "Great Hands-on Stuff");
+        Review review1 = new Review("Great Hands-on Stuff", ReviewRating.FIVE);
+        Review review2 = new Review("Great Hands-on Stuff", ReviewRating.ONE);
 
         course.addReviews(review1);
         review1.setCourse(course);
