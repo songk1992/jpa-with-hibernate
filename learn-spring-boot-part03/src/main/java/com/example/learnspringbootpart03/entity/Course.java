@@ -117,6 +117,7 @@ public class Course {
         this.students.add(student);
     }
 
+    // tostring 을 잘 관리해야 performance issue를 줄일수 있음
     @Override
     public String toString() {
         return "Course{" +
